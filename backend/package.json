@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "ts-node src/index.ts",
+    "dev": "cross-env NODE_ENV=dev nodemon src/index.ts",
     "build": "tsc",
-    "start": "npm run build && node dist/index.js"
+    "start": "npm run build && cross-env NODE_ENV=prod node dist/index.js",
+    "lint": "eslint --ext .js,.ts .",
+    "lint:fix": "eslint --ext .js,.ts . --fix",
+    "format": "prettier --check \"**/*.+(js|ts|json)\"",
+    "format:fix": "prettier --write \"**/*.+(js|ts|json)\""
   },
   "dependencies": {
     "cors": "^2.8.5",
