@@ -14,5 +14,8 @@ if (fs.existsSync(envFilePath)) {
   });
 }
 
-// get env variables
+// API vars
 export const PORT = env.get("PORT").default(4000).asPortNumber();
+
+// DATABASE vars
+export const DB_URI = env.get("DB_URI").required().asUrlString();
