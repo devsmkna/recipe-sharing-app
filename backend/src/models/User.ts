@@ -14,6 +14,7 @@ const userSchema = new Schema<User>(
     email: {
       type: String,
       unique: true,
+      index: true,
       required: false,
     },
     unconfirmedEmail: {
