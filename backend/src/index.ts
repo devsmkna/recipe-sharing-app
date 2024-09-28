@@ -15,7 +15,7 @@ const init = async () => {
       );
     });
   } catch (error) {
-    console.log("An error occured while init the server", error);
+    console.error("An error occured while init the server", error);
   }
 };
 
