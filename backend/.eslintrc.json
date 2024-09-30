@@ -1,13 +1,18 @@
 {
+  "env": {
+    "node": true,
+    "jest": true
+  },
   "root": true,
   "extends": [
     "eslint:racommended",
     "plugin:@typescript-eslint/racommended",
+    "plugin:jest/racommended",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": { "project": ["./tsconfig.json"] },
-  "plugins": ["@typescript/eslint"],
+  "plugins": ["@typescript/eslint", "jest"],
   "rules": {
     "curly": ["error", "all"]
   },
