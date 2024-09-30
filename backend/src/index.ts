@@ -23,4 +23,5 @@ const init = async () => {
 };
 
 init();
+
 export default app;
