@@ -37,6 +37,9 @@ export const signup = async (req: Request, res: Response) => {
       emailConfirmationCodeExpDate,
     });
     await newUser.save();
+    return res.status(201).json({
+      message: "User created",
+    });
   } catch (error) {
     console.error(error);
     return res.status(500).json({
