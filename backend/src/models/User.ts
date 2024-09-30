@@ -13,8 +13,6 @@ const userSchema = new Schema<User>(
     },
     email: {
       type: String,
-      unique: true,
-      index: true,
       required: false,
     },
     unconfirmedEmail: {
@@ -44,6 +42,17 @@ const userSchema = new Schema<User>(
     },
     toObject: {
       virtuals: true,
+    },
+  }
+);
+
+// indexes
+userSchema.index(
+  { email: 1 },
+  {
+    unique: true,
+    partialFilterExpression: {
+      email: { $exists: true },
     },
   }
 );
