@@ -25,7 +25,7 @@ export const signup = async (req: Request, res: Response) => {
     // create email confirmaton expiration date as 24h after signup request
     const emailConfirmationCodeExpDate = new Date();
     emailConfirmationCodeExpDate.setHours(
-      emailConfirmationCodeExpDate.getHours() + 24
+      emailConfirmationCodeExpDate.getHours() + 24,
     );
 
     // create new user

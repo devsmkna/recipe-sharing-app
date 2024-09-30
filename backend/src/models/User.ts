@@ -43,7 +43,7 @@ const userSchema = new Schema<User>(
     toObject: {
       virtuals: true,
     },
-  }
+  },
 );
 
 // indexes
@@ -54,7 +54,7 @@ userSchema.index(
     partialFilterExpression: {
       email: { $exists: true },
     },
-  }
+  },
 );
 
 export const UserModel = model<User>("user", userSchema);

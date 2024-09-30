@@ -14,7 +14,7 @@ const init = async () => {
     await connect(DB_URI);
     app.listen(PORT, () => {
       console.log(
-        `PORT ${PORT} | ENV ${NODE_ENV} | Server is running | Connected to database`
+        `PORT ${PORT} | ENV ${NODE_ENV} | Server is running | Connected to database`,
       );
     });
   } catch (error) {
@@ -23,13 +23,4 @@ const init = async () => {
 };
 
 init();
-
-app.get("/", (_, res) => {
-  res.send("Recipe sharing app");
-});
-
-app.listen(PORT, () => {
-  console.log(`PORT ${PORT} | ENV ${NODE_ENV} | Server is running`);
-});
-
 export default app;

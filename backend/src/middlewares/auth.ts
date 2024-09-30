@@ -24,6 +24,6 @@ export const signupValidationChain = [
       minUppercase: 1,
     })
     .withMessage(
-      "password must be long at least 8 characters, with at least one lower case character, one upper case and one number."
+      "password must be long at least 8 characters, with at least one lower case character, one upper case and one number.",
     ),
 ];
