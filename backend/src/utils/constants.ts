@@ -16,6 +16,7 @@ if (fs.existsSync(envFilePath)) {
 
 // API vars
 export const PORT = env.get("PORT").default(4000).asPortNumber();
+export const HASH_SALT_ROUNDS = env.get("HASH_SALT_ROUNDS").required().asInt();
 
 // DATABASE vars
 export const DB_URI = env.get("DB_URI").required().asUrlString();
