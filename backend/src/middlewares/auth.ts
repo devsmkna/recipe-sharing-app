@@ -1,6 +1,6 @@
-import { body } from "express-validator";
+import { body, query } from "express-validator";
 
-export const signupValidationChain = [
+export const signupVC = [
   body("username")
     .notEmpty()
     .withMessage("username is required")
@@ -26,4 +26,8 @@ export const signupValidationChain = [
     .withMessage(
       "password must be long at least 8 characters, with at least one lower case character, one upper case and one number.",
     ),
+];
+
+export const confirmEmailVC = [
+  query("code").isUUID().withMessage("email confirmation code is required"),
 ];
