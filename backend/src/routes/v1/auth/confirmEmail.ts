@@ -28,16 +28,20 @@ const confirmEmail = async (req: Request, res: Response) => {
     }
 
     await connection.transaction(async () => {
-      // validate email
+      // validate user
       user.email = user.unconfirmedEmail;
       await user.removeUnconfirmedEmail();
 
-      // remove validated email from other user that are trying to use it as new email
+      // get users that are trying to use the same email of the user currently validating
       const otherUsers = await UserModel.find({
         unconfirmedEmail: user.email,
+        emailConfirmationCode: { $ne: code },
       });
       await Promise.all(
-        otherUsers.map((user) => user.removeUnconfirmedEmail()),
+        otherUsers.map((user) =>
+          // if the user is still unconfirmed delete it, if is confirmed remove all the unconfirmedEmal related fields
+          !user.email ? user.deleteOne() : user.removeUnconfirmedEmail(),
+        ),
       );
     });
 
