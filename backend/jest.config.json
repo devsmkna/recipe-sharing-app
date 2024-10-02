@@ -3,5 +3,5 @@
   "testEnvironment": "node",
   "verbose": true,
   "collectCoverage": true,
-  "setupFilesAfterEnv": ["./jest.setup.ts"]
+  "setupFilesAfterEnv": ["<rootDir>/src/jest.setup.ts"]
 }

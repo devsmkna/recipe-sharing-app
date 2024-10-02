@@ -24,3 +24,9 @@ init();
 app.get("/", (_, res) => {
   res.send("Recipe sharing app");
 });
+
+app.listen(PORT, () => {
+  console.log(`PORT ${PORT} | ENV ${NODE_ENV} | Server is running`);
+});
+
+export default app;
