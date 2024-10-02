@@ -12,11 +12,14 @@ app.use("/v1", v1);
 const init = async () => {
   try {
     await connect(DB_URI);
-    app.listen(PORT, () => {
-      console.log(
-        `PORT ${PORT} | ENV ${NODE_ENV} | Server is running | Connected to database`,
-      );
-    });
+    // see: https://stackoverflow.com/a/63293781
+    if (process.env.NODE_ENV !== "test") {
+      app.listen(PORT, () => {
+        console.log(
+          `PORT ${PORT} | ENV ${NODE_ENV} | Server is running | Connected to database`,
+        );
+      });
+    }
   } catch (error) {
     console.error("An error occured while init the server", error);
   }
