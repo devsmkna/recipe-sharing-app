@@ -5,7 +5,7 @@ import { hashSync } from "bcrypt";
 import { HASH_SALT_ROUNDS } from "../../../utils/constants";
 import { randomUUID } from "crypto";
 
-export const signup = async (req: Request, res: Response) => {
+const signup = async (req: Request, res: Response) => {
   try {
     const { username, email, password } = matchedData(req);
 
@@ -48,3 +48,5 @@ export const signup = async (req: Request, res: Response) => {
     });
   }
 };
+
+export default signup;

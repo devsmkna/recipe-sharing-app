@@ -1,10 +1,12 @@
 import { Router } from "express";
-import { signup } from "./auth/signup";
-import { signupValidationChain } from "../../middlewares/auth";
-import { checkValidation } from "../../middlewares/validations";
+import { confirmEmailVC, signupVC } from "../../middlewares/auth";
+import { validate } from "../../middlewares/validations";
+import signup from "./auth/signup";
+import confirmEmail from "./auth/confirmEmail";
 
 const router = Router();
 
-router.post("/signup", signupValidationChain, checkValidation, signup);
+router.get("/confirm", confirmEmailVC, validate, confirmEmail);
+router.post("/signup", signupVC, validate, signup);
 
 export default router;

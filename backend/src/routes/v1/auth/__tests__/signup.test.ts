@@ -8,13 +8,13 @@ describe("/signup", () => {
       .post("/v1/auth/signup")
       .send({
         username: "test user",
-        email: "test@email.com",
+        email: "test-signup@email.com",
         password: "Password1",
       })
       .expect(201);
 
     const newUser = await UserModel.findOne({
-      unconfirmedEmail: "test@email.com",
+      unconfirmedEmail: "test-signup@email.com",
     });
     expect(newUser).not.toBeNull();
     expect(newUser?.username).toBe("test user");
@@ -24,7 +24,7 @@ describe("/signup", () => {
     await request(app)
       .post("/v1/auth/signup")
       .send({
-        email: "test@email.com",
+        email: "test-signup@email.com",
         password: "Password1",
       })
       .expect(400);
@@ -45,7 +45,7 @@ describe("/signup", () => {
       .post("/v1/auth/signup")
       .send({
         username: "test user",
-        email: "test@email.com",
+        email: "test-signup@email.com",
       })
       .expect(400);
   });
@@ -66,7 +66,7 @@ describe("/signup", () => {
       .post("/v1/auth/signup")
       .send({
         username: "test user",
-        email: "test@email.com",
+        email: "test-signup@email.com",
         password: "Pass1",
       })
       .expect(400);
@@ -77,7 +77,7 @@ describe("/signup", () => {
       .post("/v1/auth/signup")
       .send({
         username: "test user",
-        email: "test@email.com",
+        email: "test-signup@email.com",
         password: "password1",
       })
       .expect(400);
@@ -88,7 +88,7 @@ describe("/signup", () => {
       .post("/v1/auth/signup")
       .send({
         username: "test user",
-        email: "test@email.com",
+        email: "test-signup@email.com",
         password: "PASSWORD1",
       })
       .expect(400);
@@ -99,7 +99,7 @@ describe("/signup", () => {
       .post("/v1/auth/signup")
       .send({
         username: "test user",
-        email: "test@email.com",
+        email: "test-signup@email.com",
         password: "Password",
       })
       .expect(400);

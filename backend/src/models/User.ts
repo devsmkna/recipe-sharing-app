@@ -1,7 +1,8 @@
 import { model, Schema } from "mongoose";
-import { User } from "../types/User";
+import IUser from "./user/IUser";
+import { removeUnconfirmedEmail } from "./user/userMethods";
 
-const userSchema = new Schema<User>(
+const userSchema = new Schema<IUser>(
   {
     username: {
       type: String,
@@ -57,4 +58,7 @@ userSchema.index(
   },
 );
 
-export const UserModel = model<User>("user", userSchema);
+// instance methods
+userSchema.methods.removeUnconfirmedEmail = removeUnconfirmedEmail;
+
+export const UserModel = model<IUser>("user", userSchema);
